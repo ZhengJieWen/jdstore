@@ -15,7 +15,10 @@ body {
 .text-primary {
     color: $theme-primary;
 }
-
+.navbar-custom {
+    background-color: #222;
+    border-color: transparent;
+}
 p {
     font-size: 14px;
     line-height: 1.75;
