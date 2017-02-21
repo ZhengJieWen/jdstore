@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   devise_for :users
-
   namespace :admin do
     resources :products
-    resources :orders do
-    end
   end
 
   resources :products do
@@ -13,7 +10,6 @@ Rails.application.routes.draw do
       post :add_to_cart
     end
   end
-
   resources :carts do
     collection do
       delete :clean
@@ -21,15 +17,14 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :account do
-    resources :orders do
-      member do
-        post :pay_with_alipay
-        post :pay_with_wechat
-      end
+  resources :cart_items
+  resources :orders do
+    member do
+      post :pay_with_alipay
+      post :pay_with_wechat
     end
   end
-
-  resources :cart_items
-  resources :carts
+  namespace :account do
+    resources :orders
+  end
 end
