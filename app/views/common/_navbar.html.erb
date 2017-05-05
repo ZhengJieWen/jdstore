@@ -1,53 +1,180 @@
-<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll" href="/">駅弁</a>
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <%= link_to("Products", products_path) %>
-                </li>
-            </ul>
+<div class="navbar-wrap">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="logo"><a href="/products">駅弁</a></div>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                    <%= link_to carts_path do  %>
-                        购物车 <i class="fa fa-shopping-cart"> </i> ( <%= current_cart.products.count %> )
-                     <% end %>
-                </li>
+        <div class="cart-wrap">
+            <div class="cart">
+                <a href="/carts">
+                    <i class="fa fa-shopping-cart cart-icon "></i>我的购物车(0) &gt;
+    			      </a>
+            </div>
+        </div>
+        <ul class="navbar-list">
+            <li class="navbar-listItem">
                 <% if !current_user %>
-                    <li><%= link_to("注册", new_user_registration_path) %> </li>
-                    <li><%= link_to(content_tag(:i, '登入', class: 'fa fa-sign-in'), new_user_session_path) %></li>
-                <% else %>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Hi!, <%= current_user.email %>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <% if current_user.admin? %>
-                                <li>
-                                    <%= link_to("Admin 选单", admin_products_path ) %>
-                                </li>
-                                <li>
-                                    <%= link_to("个人订单列表", account_orders_path ) %>
-                                </li>
-                            <% end %>
-                            <li> <%= link_to(content_tag(:i, '登出', class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %> </li>
-                        </ul>
-                    </li>
+                    <a href="#" data-toggle="modal" data-target="#signup-modal">注册</a>
+                </li>
+                <li class="navbar-spacer"></li>
+                <li class="navbar-listItem">
+                    <a href="#" data-toggle="modal" data-target="#login-modal">登入</a>
+                </li>
+            <% else %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <h5>  Hi!, <%= current_user.email %> </h5>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <% if current_user.admin? %>
+               <li>
+                 <%= link_to("Admin 选单", admin_products_path ) %>
+               </li>
+             <% end %>
+                        <li> <%= link_to("登出", destroy_user_session_path, method: :delete) %> </li>
+                    </ul>
+                </li>
+            <% end %>
+        </li>
+    </ul>
+</div>
+</div>
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <div class="modal-header">
+                <h2 class="text-center">註冊</h2>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                               :html => {:id => "sign_up_user"},
+                               :format => :json,
+                               :remote => true ) do |f| %>
+                    <%= devise_error_messages! %>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder: "電子郵件" %>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <%= f.password_field :password, autocomplete: "off", required: true,minlength: 8, class: "form-control", placeholder: "密碼(最少8個字母)" %>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 8, class: "form-control", placeholder: "密碼確認" %>
+                    </div>
+                    <div class="form-actions">
+                        <br>
+                        <%= f.submit "註冊", class: 'btn btn-success' %>
+                    </div>
                 <% end %>
-            </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 取消</button>
+                <div class="links pull-right">
+                    <button class="btn btn-info btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'>登入</button><br />
+                    <br>
+                    <div class="center-block">
+                        <button class="btn btn-info btn-small text-center" data-toggle="modal" data-target="#forgot-modal" data-dismiss='modal'>忘記密碼?</button><br />
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
-</nav>
+</div>
+<div class="modal fade" id="login-modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="text-center">登入</h2>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+                               :html => {:id => "log_in_user"},
+                               :format => :json,
+                               :remote => true ) do |f| %>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder:"電子郵件" %>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <%= f.password_field :password, autocomplete: "off", required: true, class: "form-control", placeholder: "密碼" %>
+                    </div>
+                    <% if devise_mapping.rememberable? -%>
+                        <div class="checkbox col-md-12" style="padding-left:1.5em;">
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                        </div>
+                    <% end -%>
+                    <div class="form-actions">
+                        <br>
+                        <%= f.submit "登入", class: 'btn btn-success', id: 'login_btn' %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>取消</button>
+                <div class="links pull-right">
+                    <button class="btn btn-info btn-small" data-toggle="modal" data-target="#signup-modal" data-dismiss='modal'>註冊</button><br />
+                    <br>
+                    <div class="center-block">
+                        <button class="btn btn-info btn-small text-center" data-toggle="modal" data-target="#forgot-modal" data-dismiss='modal'>忘記密碼?</button><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="forgot-modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2>Forgot your password?</h2>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+                                                :html => {:id => "forgot_password_user"},
+                                                :format => :json,
+                                                :remote => true ) do |f| %>
+                    <%= devise_error_messages! %>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        <%= f.email_field :email, autofocus: true, required:true, class: "form-control", placeholder:"Email" %>
+                    </div>
+                    <div class="form-actions">
+                        <br>
+                        <%= f.submit "Send me reset password instructions", class: 'btn btn-success' %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>取消</button>
+                <div class="links pull-right">
+                    <button class="btn btn-info btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'>登入</button><br />
+                    <br>
+                    <div class="center-block">
+                        <button class="btn btn-info btn-small" data-toggle="modal" data-target="#signup-modal" data-dismiss='modal'>註冊</button><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

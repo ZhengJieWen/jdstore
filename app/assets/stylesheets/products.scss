@@ -1,3 +1,128 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.intro-text {
+    width: 550px;
+}
+
+.fr {
+    float: right;
+    display: inline;
+}
+
+.ell {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+}
+
+.f20 {
+    font-size: 20px;
+}
+
+.fb {
+    font-weight: bold;
+}
+
+.intro-text-desc {
+    margin-top: 7px;
+}
+
+.intro-text-value {
+    height: 60px;
+    line-height: 60px;
+}
+
+.bg-gray {
+    background: #F5F5F5;
+}
+
+.pr30 {
+    padding-right: 30px;
+}
+
+.pl20 {
+    padding-left: 20px;
+}
+
+.col-red {
+    color: #d32048;
+}
+
+.f24 {
+    font-size: 24px;
+}
+
+.mt-5 {
+    margin-top: -5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mb30 {
+    margin-bottom:  30px;
+}
+
+
+.fl {
+    float: left;
+    display: inline;
+}
+
+.countNumber {
+    padding: 0 24px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.countNumber-btn-sub {
+    right: auto;
+    left: 0;
+    top: 0;
+}
+
+.countNumber-btn {
+    font-size: 22px;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    overflow: hidden;
+    background: #fff;
+    color: #999;
+    border: 1px solid #e0e0e0;
+}
+
+.countNumber-input {
+    font-size: 16px;
+    text-align: center;
+    width: 74px;
+    border: 1px solid #e0e0e0;
+    height: 26px;
+    padding: 14px 4px;
+    outline: none;
+}
+
+.countNumber-input {
+    font-size: 16px;
+    text-align: center;
+    width: 74px;
+    border: 1px solid #e0e0e0;
+    height: 26px;
+    padding: 14px 4px;
+    outline: none;
+}
+
+.countNumber-btn-plus {
+    right: 0;
+    top: 0;
+}
