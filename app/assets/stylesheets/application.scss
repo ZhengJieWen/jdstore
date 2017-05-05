@@ -170,12 +170,14 @@ list-style-type:none;
   float: right; /*你去右邊*/
   padding-right: 50px;
   margin-top: 10px;
+  margin-left: -50;
 }
 
 .navbar-listItem {
   float: left; /*li是block元素，我們知道block元素是會獨占一行的，如果要讓它們在一行，那就要加上float*/
   padding-left: 10px; /*左邊加點空间*/
   padding-right: 10px; /*右邊加點空間*/
+  margin-top: 8px;
 }
 
 .navbar-spacer {
@@ -255,15 +257,17 @@ list-style-type:none;
 .cart-wrap {
   float: left; /*logo、seatch、cart这三个模块都是用div包起来的，是block元素，如果要处于同一行，那就要加float*/
   margin-top: 10px; /*上边距*/
-  margin-left: 480px; /*左边距*/
+  margin-left: 60px; /*左边距*/
 }
 
 .cart {
-  padding: 8px 20px; /*加内边距*/
+  float: left;
+  padding: 9px 10px; /*加内边距*/
   cursor: pointer; /*鼠标一上去，显示手型*/
-  border: 1px solid #DFDFDF; /*1像素，实线，灰色*/
+  /*border: 1px solid #DFDFDF; /*1像素，实线，灰色*/
   background: #F5F5F5; /*灰色背景*/
   font-size: 12px; /*字体小一点好看*/
+
 }
 
 .fa-shopping-cart {

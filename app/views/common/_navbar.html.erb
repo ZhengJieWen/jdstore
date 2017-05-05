@@ -5,12 +5,15 @@
         </div>
         <div class="cart-wrap">
             <div class="cart">
-                <a href="/carts">
-                    <i class="fa fa-shopping-cart cart-icon "></i>我的购物车(0) &gt;
-    			      </a>
+
             </div>
         </div>
         <ul class="navbar-list">
+          <li class="cart">
+          <a href="/carts">
+              <i class="fa fa-shopping-cart cart-icon "></i>
+          </a>
+          </li>
             <li class="navbar-listItem">
                 <% if !current_user %>
                     <a href="#" data-toggle="modal" data-target="#signup-modal">注册</a>
@@ -53,21 +56,21 @@
                     <%= devise_error_messages! %>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
+
                         </span>
                         <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder: "電子郵件" %>
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
+
                         </span>
                         <%= f.password_field :password, autocomplete: "off", required: true,minlength: 8, class: "form-control", placeholder: "密碼(最少8個字母)" %>
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
+
                         </span>
                         <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 8, class: "form-control", placeholder: "密碼確認" %>
                     </div>
@@ -78,7 +81,7 @@
                 <% end %>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 取消</button>
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal">取消</button>
                 <div class="links pull-right">
                     <button class="btn btn-info btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'>登入</button><br />
                     <br>
@@ -90,6 +93,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="login-modal" role="dialog">
     <div class="modal-dialog">
         <div class="loginmodal-container">
@@ -104,14 +108,14 @@
                                :remote => true ) do |f| %>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
+
                         </span>
                         <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder:"電子郵件" %>
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-lock"></span>
+
                         </span>
                         <%= f.password_field :password, autocomplete: "off", required: true, class: "form-control", placeholder: "密碼" %>
                     </div>
@@ -128,7 +132,7 @@
                 <% end %>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>取消</button>
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal">取消</button>
                 <div class="links pull-right">
                     <button class="btn btn-info btn-small" data-toggle="modal" data-target="#signup-modal" data-dismiss='modal'>註冊</button><br />
                     <br>
@@ -155,7 +159,7 @@
                     <%= devise_error_messages! %>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
+
                         </span>
                         <%= f.email_field :email, autofocus: true, required:true, class: "form-control", placeholder:"Email" %>
                     </div>
@@ -166,7 +170,7 @@
                 <% end %>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>取消</button>
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"></span>取消</button>
                 <div class="links pull-right">
                     <button class="btn btn-info btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'>登入</button><br />
                     <br>
