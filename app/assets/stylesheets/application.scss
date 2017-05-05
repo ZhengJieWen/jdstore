@@ -144,6 +144,7 @@ list-style-type:none;
 .dropdown {
   padding-top:  6px ;
   padding-bottom:   -10px ;
+  width: 200px;
 }
 
  .navbar-wrap {
@@ -401,7 +402,7 @@ margin-bottom: 12px;
  background: #fff;
  margin-right: 10px;
  margin-bottom: 20px;
-
+ overflow: hidden;
  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.09);
  position: relative;
  top: 0;
@@ -424,6 +425,10 @@ margin-bottom: 12px;
 
 .col-red {
     color: #d32048;
+}
+
+.col-white {
+    color: #fff;
 }
 
 .f18 {
@@ -500,4 +505,11 @@ text-align:center;/*text-align 屬性定義為水平對齊*/
 margin-top: 40px;
 height: 36px;
 line-height: 36px;
+}
+
+.pr {
+    position: relative;
+    width: 210px;
+  /*  text-align:center; 水營居中*/
+    margin-left: 10px;
 }
